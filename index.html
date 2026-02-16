@@ -1,62 +1,1055 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habiba Mursaleen · full‑stack dev (3D skills)</title>
+  <!-- Animate.css + AOS + Font Awesome + Google Fonts + Bootstrap -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    :root {
+      --bg-dark: #0a0c12;
+      --surface-dark: #14181f;
+      --card-dark: #1e2630;
+      --primary-cyan: #2bd9cd;
+      --primary-glow: #17c5b8;
+      --text-light: #eef2f6;
+      --text-muted: #a0aec0;
+      --border-glow: rgba(43, 217, 205, 0.15);
+      --grad-cyan: linear-gradient(145deg, #1f8a82, #2bd9cd);
+      --shadow-card: 0 20px 35px -10px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(43, 217, 205, 0.1);
+      --shadow-hover: 0 30px 45px -12px #000000, 0 0 0 1.5px #2bd9cd;
+    }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* navbar */
+    .navbar {
+      background: rgba(10, 12, 18, 0.85) !important;
+      backdrop-filter: blur(14px);
+      padding: 0.9rem 2rem;
+      border-bottom: 1px solid var(--border-glow);
+    }
+    .navbar-brand, .nav-link {
+      color: var(--text-light) !important;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.6rem;
+      background: var(--grad-cyan);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent !important;
+    }
+    .nav-link:hover {
+      color: var(--primary-cyan) !important;
+      transform: translateY(-1px);
+      text-shadow: 0 0 6px rgba(43, 217, 205, 0.6);
+    }
+
+    /* home */
+    .main {
+      display: flex;
+      width: 100%;
+      min-height: 100vh;
+      background: radial-gradient(circle at 70% 20%, #1a2a32, var(--bg-dark) 70%);
+      align-items: center;
+      padding: 0 5%;
+    }
+    .div1 { flex: 1.2; padding-right: 2rem; }
+    .div2 { flex: 0.8; display: flex; justify-content: center; align-items: center; }
+    .home h3 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+    .home h1 {
+      font-size: 4.2rem;
+      font-weight: 700;
+      line-height: 1.1;
+      background: linear-gradient(to right, #ffffff, #b0f0f0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .home h3 span {
+      color: var(--primary-cyan);
+      font-weight: 600;
+      border-bottom: 2px solid var(--primary-cyan);
+    }
+    .home p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 550px;
+      margin: 1.5rem 0 1.8rem;
+    }
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.02);
+      border: 1.5px solid rgba(43, 217, 205, 0.3);
+      color: var(--primary-cyan);
+      font-size: 1.4rem;
+      transition: 0.25s;
+      text-decoration: none;
+    }
+    .social-icons a:hover {
+      background: var(--primary-cyan);
+      color: #0a0c12;
+      border-color: var(--primary-cyan);
+      box-shadow: 0 0 20px var(--primary-cyan);
+      transform: scale(1.07);
+    }
+    .btn-modern {
+      position: relative;
+      background: transparent;
+      border: 2px solid var(--primary-cyan);
+      border-radius: 3rem;
+      padding: 0.9rem 2.5rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--primary-cyan);
+      transition: 0.3s;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .btn-modern::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background: var(--primary-cyan);
+      transition: 0.4s ease;
+      z-index: 0;
+    }
+    .btn-modern:hover {
+      color: #0a0c12;
+    }
+    .btn-modern:hover::before { width: 100%; }
+    .btn-modern a { text-decoration: none; color: inherit; }
+
+    .profile-glow {
+      width: 340px; height: 340px; border-radius: 50%;
+      background: linear-gradient(145deg, #1e3a45, #0d1c24);
+      border: 4px solid rgba(43, 217, 205, 0.3);
+      box-shadow: 0 0 70px rgba(43, 217, 205, 0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 8rem; color: rgba(43, 217, 205, 0.25);
+      transition: 0.4s;
+    }
+    .profile-glow i { filter: drop-shadow(0 0 10px #2bd9cd); }
+    .profile-glow:hover {
+      border-color: var(--primary-cyan);
+      box-shadow: 0 0 100px var(--primary-cyan);
+    }
+
+    /* headings */
+    section h2 {
+      font-size: 2.5rem; font-weight: 700; color: #ffffff;
+      margin-bottom: 2.2rem; letter-spacing: -0.02em;
+      background: linear-gradient(to right, #fff, #a0f0ea);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      border-bottom: 3px solid var(--primary-cyan); padding-bottom: 8px;
+      display: inline-block;
+    }
+
+    #about {
+      background-color: var(--surface-dark);
+      border-top: 1px solid var(--border-glow);
+      border-bottom: 1px solid var(--border-glow);
+    }
+    #about p.lead {
+      color: #cbd5e1; font-size: 1.3rem; max-width: 850px;
+      margin-left: auto; margin-right: auto;
+    }
+
+    /* ===== PROFESSIONAL 3D TECHNICAL SKILLS SECTION (INTEGRATED) ===== */
+    .skills-3d {
+      max-width: 1300px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.8rem;
+      perspective: 2000px;
+    }
+
+    /* elegant 3D card */
+    .skill-card-3d {
+      width: 170px;
+      height: 190px;
+      transform-style: preserve-3d;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .skill-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.4s;
+    }
+
+    /* base layer - main card */
+    .skill-base {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #1e2630;
+      border-radius: 24px;
+      transform: translateZ(0);
+      box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(43, 217, 205, 0.2);
+      transition: all 0.3s;
+    }
+
+    /* front layer - content */
+    .skill-front {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #232b36;
+      border-radius: 24px;
+      transform: translateZ(15px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem;
+      box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(43, 217, 205, 0.3);
+      transition: transform 0.3s, border-color 0.2s;
+    }
+
+    .skill-front i {
+      font-size: 3.2rem;
+      color: #2bd9cd;
+      margin-bottom: 0.8rem;
+      transition: all 0.3s;
+    }
+
+    .skill-front span {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #eef2f6;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* middle depth layer */
+    .skill-mid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #1a212a;
+      border-radius: 24px;
+      transform: translateZ(8px);
+      border: 1px solid rgba(43, 217, 205, 0.15);
+      transition: transform 0.3s;
+    }
+
+    /* back layer (shadow depth) */
+    .skill-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #151c24;
+      border-radius: 24px;
+      transform: translateZ(-8px);
+      box-shadow: 0 0 0 1px rgba(43, 217, 205, 0.1);
+      transition: transform 0.3s;
+    }
+
+    /* subtle shine overlay */
+    .skill-shine {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+      pointer-events: none;
+      z-index: 10;
+      transform: translateZ(20px);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    /* HOVER EFFECTS */
+    .skill-card-3d:hover {
+      transform: translateZ(20px) rotateX(4deg) rotateY(6deg);
+    }
+
+    .skill-card-3d:hover .skill-front {
+      transform: translateZ(28px);
+      border-color: #2bd9cd;
+      box-shadow: 0 15px 30px -10px rgba(43, 217, 205, 0.3);
+    }
+
+    .skill-card-3d:hover .skill-mid {
+      transform: translateZ(14px);
+      background: #1f2937;
+    }
+
+    .skill-card-3d:hover .skill-back {
+      transform: translateZ(-12px);
+      background: #11181f;
+      box-shadow: 0 0 0 2px rgba(43, 217, 205, 0.2);
+    }
+
+    .skill-card-3d:hover .skill-shine {
+      opacity: 0.5;
+    }
+
+    .skill-card-3d:hover .skill-front i {
+      color: #ffffff;
+      filter: drop-shadow(0 0 10px #2bd9cd);
+      transform: scale(1.1);
+    }
+
+    .skill-card-3d:hover .skill-base {
+      background: #1a2632;
+      border-color: rgba(43, 217, 205, 0.4);
+    }
+
+    /* individual icon colors on hover (subtle variation) */
+    .skill-card-3d:hover:nth-child(1) i { color: #2bd9cd; }
+    .skill-card-3d:hover:nth-child(2) i { color: #a78bfa; }
+    .skill-card-3d:hover:nth-child(3) i { color: #f59e0b; }
+    .skill-card-3d:hover:nth-child(4) i { color: #ec4899; }
+    .skill-card-3d:hover:nth-child(5) i { color: #fbbf24; }
+    .skill-card-3d:hover:nth-child(6) i { color: #34d399; }
+    .skill-card-3d:hover:nth-child(7) i { color: #f87171; }
+    .skill-card-3d:hover:nth-child(8) i { color: #60a5fa; }
+
+    /* service cards with 3D tilt (existing) */
+    .service-card {
+      border-radius: 32px;
+      transform-style: preserve-3d;
+      height: 280px;
+      width: 100%;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .service-card .atvImg-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 32px;
+      transition: all 0.2s ease-out;
+    }
+
+    .service-card .atvImg-container.over {
+      box-shadow: 0 45px 100px rgba(0, 0, 0, 0.6), 0 0 0 2px var(--primary-cyan);
+    }
+
+    .service-card .atvImg-layers {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 32px;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      background: var(--card-dark);
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(43, 217, 205, 0.2);
+    }
+
+    .service-card .atvImg-rendered-layer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      transition: all 0.1s ease-out;
+      border-radius: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .service-card .atvImg-shadow {
+      position: absolute;
+      top: 5%; left: 5%;
+      width: 90%; height: 90%;
+      transition: all 0.2s ease-out;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+      border-radius: 32px;
+      pointer-events: none;
+    }
+
+    .service-card .atvImg-shine {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      border-radius: 32px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 80%);
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0.7;
+    }
+
+    .service-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem;
+    }
+    .title-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1rem;
+    }
+    .title-wrapper i {
+      font-size: 2rem;
+      color: var(--primary-cyan);
+      filter: drop-shadow(0 0 8px rgba(43, 217, 205, 0.6));
+    }
+    .title-wrapper h3 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+    }
+    .service-desc {
+      color: #b0c4de;
+      font-size: 0.95rem;
+      max-width: 240px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    /* project cards */
+    .project-item {
+      perspective: 1200px;
+    }
+    .project-item .card {
+      background: var(--card-dark);
+      border: 1px solid rgba(43, 217, 205, 0.15);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: 0.3s ease;
+      position: relative;
+    }
+    .project-img-wrapper {
+      position: relative;
+      overflow: hidden;
+      height: 220px;
+    }
+    .project-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .project-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(145deg, rgba(10, 12, 18, 0.85), rgba(43, 217, 205, 0.25));
+      backdrop-filter: blur(4px);
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      padding: 1.5rem; text-align: center;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      border-radius: 28px;
+    }
+    .project-overlay p { color: #e0f2fe; margin-bottom: 1rem; font-size: 0.95rem; }
+    .project-overlay .tech-badge {
+      display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 1.2rem;
+    }
+    .project-overlay .tech-badge span {
+      background: rgba(43, 217, 205, 0.2); border: 1px solid var(--primary-cyan);
+      border-radius: 40px; padding: 4px 14px; font-size: 0.8rem; font-weight: 600; color: #fff;
+    }
+    .project-overlay .btn-ghost {
+      background: transparent; border: 2px solid white; border-radius: 40px;
+      padding: 8px 24px; font-weight: 600; color: white; text-decoration: none; transition: 0.2s;
+    }
+    .project-overlay .btn-ghost:hover {
+      background: white; color: #0a0c12; border-color: var(--primary-cyan);
+    }
+    .project-item .card:hover .project-overlay {
+      opacity: 1; transform: translateY(0);
+    }
+    .project-item .card:hover img { transform: scale(1.1); }
+    .card-body a { text-decoration: none; font-weight: 700; font-size: 1.3rem; color: #ffffff; }
+    .card-body a:hover { color: var(--primary-cyan); }
+    .card-body p { color: #a0b3c9; }
+
+    /* filter buttons */
+    .filter {
+      background: transparent; border: 2px solid rgba(43, 217, 205, 0.5);
+      color: var(--primary-cyan); font-weight: 600; border-radius: 50px;
+      padding: 10px 30px; margin: 0 6px; transition: 0.2s;
+    }
+    .filter:hover, .filter.active {
+      background: var(--primary-cyan); border-color: var(--primary-cyan);
+      color: #0a0c12; box-shadow: 0 0 20px #2bd9cd;
+    }
+
+    /* contact section */
+    .contact {
+      background: var(--surface-dark); border-top: 1px solid var(--border-glow);
+      padding: 5rem 2rem;
+    }
+    .contact-content {
+      max-width: 1200px; margin: 3rem auto 0;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    }
+    .contact-item {
+      display: flex; align-items: center; gap: 1.5rem;
+      padding: 1.8rem; background: var(--card-dark);
+      border-radius: 28px; border: 1px solid rgba(43, 217, 205, 0.2);
+      transition: 0.25s;
+    }
+    .contact-item:hover {
+      border-color: var(--primary-cyan); transform: translateX(8px);
+      box-shadow: 0 0 25px rgba(43,217,205,0.3);
+    }
+    .contact-item i {
+      font-size: 2.2rem; color: var(--primary-cyan);
+      width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.3); border-radius: 50%; border: 1px solid var(--primary-cyan);
+    }
+    .contact-details h4 { color: #ffffff; margin-bottom: 0.3rem; font-weight: 600; }
+    .contact-details p { color: #a5b9d0; }
+    .contact-form {
+      background: var(--card-dark); padding: 2.8rem;
+      border-radius: 40px; border: 1px solid rgba(43, 217, 205, 0.2);
+    }
+    .form-group label { display: block; color: #cbd5e1; font-weight: 500; margin-bottom: 0.6rem; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 1rem 1.2rem;
+      background: rgba(0,0,0,0.3); border: 1.5px solid #2d3a48;
+      border-radius: 24px; color: #f1f7fe; transition: 0.2s;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--primary-cyan);
+      box-shadow: 0 0 15px rgba(43,217,205,0.3);
+    }
+    .submit-btn {
+      width: 100%; padding: 1.1rem; background: transparent;
+      border: 2px solid var(--primary-cyan); color: var(--primary-cyan);
+      border-radius: 40px; font-weight: 700; font-size: 1.1rem; transition: 0.3s;
+    }
+    .submit-btn:hover {
+      background: var(--primary-cyan); color: #0a0c12;
+      box-shadow: 0 0 30px #2bd9cd;
+    }
+
+    footer {
+      background: #0a0c12; border-top: 1px solid rgba(43,217,205,0.15);
+      padding: 3rem 0; text-align: center;
+    }
+    footer .social-icon {
+      color: var(--text-muted); font-size: 1.5rem; margin: 0 12px; transition: 0.2s;
+    }
+    footer .social-icon:hover {
+      color: var(--primary-cyan); text-shadow: 0 0 12px #2bd9cd;
+    }
+    footer p { color: #728197; margin-top: 2rem; }
+    footer i.fa-heart { color: #ff79c6; }
+
+    #typed { border-right: 3px solid var(--primary-cyan); padding-right: 6px; animation: blink 0.8s step-end infinite; }
+    @keyframes blink { 50% { border-color: transparent; } }
+  </style>
 </head>
 <body>
-    <div class="navbar" id="navbar">    
-        <div class="logo"><h2>logo</h2></div>
-        <div class="navbar-links" id="navlinks">
-            <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">Skill</a></li>
-                <li><a href="">About Us</a></li>
-                <li><a href="">Contact</a></li>
-            </ul>
-        </div>
-        <div class="side-icons">
-            <div class="icon">
-                <i class="ri-sun-line" id="sun"></i>
-                <i class="ri-moon-line" id="moon"></i>
-            </div>
-            <div class="toggle-icon"><i class="ri-bar-chart-horizontal-line" id="toggle"></i></div>
-        </div>
-       
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+    <div class="container">
+      <a class="navbar-brand animate__animated animate__pulse" href="#home"><i class="fas fa-code"></i> H.M.</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <!-- body section  -->
-    <section>
-        <div class="main">
-            <div class="div1"> 
-                <div class="home">
-                    <h3 id="home">Hello, It's Me</h3>
-                    <h1 id="home">Habiba Mursaleen</h1>
-                    <h3 id="home">And I'm a <span id="typed"></span></h3>
-                    <p id="home">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora voluptates sed facilis accusamus, eaque cum h
-                        ic in aliquid, et libero facere, velit exercitationem ab quasi magni impedit quod quas soluta?
-                    </p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon"><i class="ri-facebook-line"></i></a>
-                        <a href="#" class="social-icon"><i class="ri-instagram-line"></i></a>
-                        <a href="#" class="social-icon"><i class="ri-linkedin-line"></i></a>
-                        <a href="#" class="social-icon"><i class="ri-github-line"></i></a>
-                    </div>
-                    <button class="btn"><a href="#"><span>Download CV</span></a></button>                   
-                 </div>              
-            </div>
-            <div class="div2">
-                <img src="" alt="">
-            </div>
+  <!-- home -->
+  <section id="home" style="padding-top: 70px;">
+    <div class="main">
+      <div class="div1" data-aos="fade-right">
+        <div class="home">
+          <h3>Hello, It's Me</h3>
+          <h1>Habiba Mursaleen</h1>
+          <h3>And I'm a <span id="typed"></span></h3>
+          <p>crafting full‑stack solutions with ASP.NET, PHP, and modern frontends. I merge clean code with immersive 3D UI.</p>
+          <div class="social-icons">
+            <a href="#" aria-label="facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="linkedin"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="github"><i class="fab fa-github"></i></a>
+          </div>
+          <button class="btn-modern"><a href="#"><span>Download CV</span></a></button>
         </div>
-    </section>
-    <script src="main.js"></script>
+      </div>
+      <div class="div2" data-aos="fade-left">
+        <div class="profile-glow">
+          <i class="fas fa-user-astronaut"></i>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- about -->
+  <section id="about" class="py-5 text-center" data-aos="fade-up">
+    <div class="container">
+      <h2>About Me</h2>
+      <p class="lead">I architect full‑stack applications with ASP.NET Core, PHP, and database systems. I believe in performant, accessible design and writing code that lasts. Currently exploring 3D UI interactions.</p>
+    </div>
+  </section>
 
+  <!-- NEW 3D TECHNICAL SKILLS SECTION (REPLACES OLD SKILLS) -->
+  <section id="skills" class="py-5" data-aos="fade-up" style="background: var(--bg-dark);">
+    <div class="container">
+      <h2 class="text-center">Technical expertise</h2>
+      
+      <div class="skills-grid">
+        <!-- ASP.NET Core -->
+        <div class="skill-card-3d">
+          <div class="skill-card-inner">
+            <div class="skill-base"></div>
+            <div class="skill-mid"></div>
+            <div class="skill-back"></div>
+            <div class="skill-front">
+              <i class="fa-brands fa-microsoft"></i>
+              <span>ASP.NET Core</span>
+            </div>
+            <div class="skill-shine"></div>
+          </div>
+        </div>
+
+        <!-- PHP -->
+        <div class="skill-card-3d">
+          <div class="skill-card-inner">
+            <div class="skill-base"></div>
+            <div class="skill-mid"></div>
+            <div class="skill-back"></div>
+            <div class="skill-front">
+              <i class="fa-brands fa-php"></i>
+              <span>PHP</span>
+            </div>
+            <div class="skill-shine"></div>
+          </div>
+        </div>
+
+        <!-- MySQL -->
+        <div class="skill-card-3d">
+          <div class="skill-card-inner">
+            <div class="skill-base"></div>
+            <div class="skill-mid"></div>
+            <div class="skill-back"></div>
+            <div class="skill-front">
+              <i class="fa-solid fa-database"></i>
+              <span>MySQL</span>
+            </div>
+            <div class="skill-shine"></div>
+          </div>
+        </div>
+
+        <!-- Bootstrap 5 -->
+        <div class="skill-card-3d">
+          <div class="skill-card-inner">
+            <div class="skill-base"></div>
+            <div class="skill-mid"></div>
+            <div class="skill-back"></div>
+            <div class="skill-front">
+              <i class="fa-brands fa-bootstrap"></i>
+              <span>Bootstrap 5</span>
+            </div>
+            <div class="skill-shine"></div>
+          </div>
+        </div>
+
+        <!-- JavaScript -->
+        <div class="skill-card-3d">
+          <div class="skill-card-inner">
+            <div class="skill-base"></div>
+            <div class="skill-mid"></div>
+            <div class="skill-back"></div>
+            <div class="skill-front">
+              <i class="fa-brands fa-js"></i>
+              <span>JavaScript</span>
+            </div>
+            <div class="skill-shine"></div>
+          </div>
+        </div>
+
+        <!-- HTML5/CSS3 -->
+        <div class="skill-card-3d">
+          <div class="skill-card-inner">
+            <div class="skill-base"></div>
+            <div class="skill-mid"></div>
+            <div class="skill-back"></div>
+            <div class="skill-front">
+              <i class="fa-brands fa-html5"></i>
+              <span>HTML5/CSS3</span>
+            </div>
+            <div class="skill-shine"></div>
+          </div>
+        </div>
+
+        <!-- Git -->
+        <div class="skill-card-3d">
+          <div class="skill-card-inner">
+            <div class="skill-base"></div>
+            <div class="skill-mid"></div>
+            <div class="skill-back"></div>
+            <div class="skill-front">
+              <i class="fa-brands fa-git-alt"></i>
+              <span>Git</span>
+            </div>
+            <div class="skill-shine"></div>
+          </div>
+        </div>
+
+        <!-- sql server -->
+        <div class="skill-card-3d">
+          <div class="skill-card-inner">
+            <div class="skill-base"></div>
+            <div class="skill-mid"></div>
+            <div class="skill-back"></div>
+            <div class="skill-front">
+              <i class="fa-solid fa-database"></i>
+              <span>SQL Server</span>
+            </div>
+            <div class="skill-shine"></div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- SERVICES with 3D tilt effect -->
+  <section id="services" class="py-5" data-aos="fade-up" style="background: var(--surface-dark);">
+    <div class="container">
+      <h2 class="text-center">What I do</h2>
+      <div class="row g-4 mt-3">
+        <!-- card 1 - Web development -->
+        <div class="col-md-4">
+          <div class="service-card atvImg" id="service-1">
+            <div class="atvImg-layer" data-layer="content"></div>
+            <div class="atvImg-layer" data-layer="shine"></div>
+          </div>
+        </div>
+        <!-- card 2 - Responsive UI -->
+        <div class="col-md-4">
+          <div class="service-card atvImg" id="service-2">
+            <div class="atvImg-layer" data-layer="content"></div>
+            <div class="atvImg-layer" data-layer="shine"></div>
+          </div>
+        </div>
+        <!-- card 3 - Database integration -->
+        <div class="col-md-4">
+          <div class="service-card atvImg" id="service-3">
+            <div class="atvImg-layer" data-layer="content"></div>
+            <div class="atvImg-layer" data-layer="shine"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- projects -->
+  <section id="projects" class="py-5" style="background: var(--bg-dark);" data-aos="fade-up">
+    <div class="container text-center">
+      <h2>Recent projects</h2>
+      <div class="mb-5">
+        <button class="btn filter active" data-filter="all">All</button>
+        <button class="btn filter" data-filter="html">HTML/CSS</button>
+        <button class="btn filter" data-filter="asp">ASP.NET</button>
+        <button class="btn filter" data-filter="php">PHP</button>
+      </div>
+
+      <div class="row g-4">
+        <!-- HTML project -->
+        <div class="col-md-4 project-item html">
+          <div class="card">
+            <div class="project-img-wrapper">
+              <img src="p1.jpg" alt="pizza">
+              <div class="project-overlay">
+                <div class="tech-badge"><span>HTML5</span><span>CSS3</span><span>Bootstrap</span></div>
+                <p>Fully responsive pizza restaurant static site.</p>
+                <a href="https://hab712.github.io/shalepizza/" target="_blank" class="btn-ghost">Live preview</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ASP.NET project -->
+        <div class="col-md-4 project-item asp">
+          <div class="card">
+            <div class="project-img-wrapper">
+              <img src="p2.jpg" alt="radiocab">
+              <div class="project-overlay">
+                <div class="tech-badge"><span>ASP.NET MVC</span><span>SQL Server</span></div>
+                <p>Cab booking system with admin panel.</p>
+                <a href="#" class="btn-ghost" target="_blank">Live Preview</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- PHP project -->
+        <div class="col-md-4 project-item php">
+          <div class="card">
+            <div class="project-img-wrapper">
+              <img src="https://placehold.co/600x400/0b262e/2bd9cd?text=CAREb" alt="careb">
+              <div class="project-overlay">
+                <div class="tech-badge"><span>PHP</span><span>MySQL</span><span>Laravel</span></div>
+                <p>Healthcare management prototype.</p>
+                <a href="#" class="btn-ghost" target="_blank">Live Preview</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- contact -->
+  <section class="contact" id="contact">
+    <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+    <p class="section-subtitle text-muted" data-aos="fade-up" data-aos-delay="100">Let's build something great</p>
+    <div class="contact-content">
+      <div class="contact-info" data-aos="fade-right">
+        <div class="contact-item"><i class="fas fa-envelope"></i><div class="contact-details"><h4>Email</h4><p>habiba.m@dev.io</p></div></div>
+        <div class="contact-item"><i class="fas fa-phone-alt"></i><div class="contact-details"><h4>Phone</h4><p>+92 300 123 4567</p></div></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><div class="contact-details"><h4>Location</h4><p>Karachi, Pakistan — remote</p></div></div>
+      </div>
+      <form class="contact-form" data-aos="fade-left">
+        <div class="form-group"><label for="name">Your Name</label><input type="text" id="name" placeholder="Alex Chen" required></div>
+        <div class="form-group"><label for="email">Your Email</label><input type="email" id="email" placeholder="alex@example.com" required></div>
+        <div class="form-group"><label for="message">Message</label><textarea id="message" placeholder="Tell me about your project..." rows="4" required></textarea></div>
+        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane me-2"></i>Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer>
+    <div class="container">
+      <div class="mb-4">
+        <a href="https://github.com/HAB712" class="social-icon"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/habiba-mursaleen-426753395/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:shaikhhabiba526@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p>© 2025 Habiba Mursaleen — full‑stack dev · 3D skills & tilt cards</p>
+    </div>
+  </footer>
+
+  <!-- scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: false, mirror: true });
+
+    // smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // typed effect
+    const typedSpan = document.getElementById('typed');
+    const roles = ['full‑stack dev', 'ASP.NET expert', 'PHP artisan', '3D UI lover'];
+    let roleIndex = 0, charIndex = 0, isDeleting = false;
+    function typeEffect() {
+      const currentRole = roles[roleIndex];
+      if (isDeleting) typedSpan.textContent = currentRole.substring(0, charIndex - 1), charIndex--;
+      else typedSpan.textContent = currentRole.substring(0, charIndex + 1), charIndex++;
+      if (!isDeleting && charIndex === currentRole.length) { isDeleting = true; setTimeout(typeEffect, 2000); }
+      else if (isDeleting && charIndex === 0) { isDeleting = false; roleIndex = (roleIndex + 1) % roles.length; setTimeout(typeEffect, 300); }
+      else setTimeout(typeEffect, isDeleting ? 60 : 100);
+    }
+    typeEffect();
+
+    // atvImg for service cards
+    function atvImg() {
+      var d = document;
+      var imgs = d.querySelectorAll('.atvImg');
+      if (imgs.length <= 0) return;
+
+      for (var l = 0; l < imgs.length; l++) {
+        var thisImg = imgs[l];
+        var layerElems = thisImg.querySelectorAll('.atvImg-layer');
+        var totalLayerElems = layerElems.length;
+        if (totalLayerElems <= 0) continue;
+
+        var cardIndex = l;
+        var icons = ['fa-laptop-code', 'fa-pen-ruler', 'fa-database'];
+        var titles = ['Web development', 'Responsive UI', 'Database integration'];
+        var descs = [
+          'ASP.NET MVC, Web APIs, Laravel, and interactive front‑ends.',
+          'Pixel‑perfect, mobile‑first designs, dark mode ready.',
+          'MySQL, SQL Server, efficient query design and ORM.'
+        ];
+
+        while (thisImg.firstChild) thisImg.removeChild(thisImg.firstChild);
+
+        var containerHTML = d.createElement('div');
+        var shineHTML = d.createElement('div');
+        var shadowHTML = d.createElement('div');
+        var layersHTML = d.createElement('div');
+        var layers = [];
+
+        containerHTML.className = 'atvImg-container';
+        shineHTML.className = 'atvImg-shine';
+        shadowHTML.className = 'atvImg-shadow';
+        layersHTML.className = 'atvImg-layers';
+
+        for (var i = 0; i < totalLayerElems; i++) {
+          var layer = d.createElement('div');
+          layer.className = 'atvImg-rendered-layer';
+          
+          if (i === 0) {
+            layer.innerHTML = '<div class="service-content">' +
+              '<div class="title-wrapper">' +
+                '<i class="fas ' + icons[cardIndex] + '"></i>' +
+                '<h3>' + titles[cardIndex] + '</h3>' +
+              '</div>' +
+              '<p class="service-desc">' + descs[cardIndex] + '</p>' +
+              '</div>';
+          } else {
+            layer.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 90%)';
+            layer.style.pointerEvents = 'none';
+          }
+          
+          layersHTML.appendChild(layer);
+          layers.push(layer);
+        }
+
+        containerHTML.appendChild(shadowHTML);
+        containerHTML.appendChild(layersHTML);
+        containerHTML.appendChild(shineHTML);
+        thisImg.appendChild(containerHTML);
+
+        var w = thisImg.clientWidth || thisImg.offsetWidth || 350;
+        thisImg.style.transform = 'perspective(' + w * 3 + 'px)';
+
+        (function(_thisImg, _layers, _totalLayers, _shine) {
+          _thisImg.addEventListener('mousemove', function(e) {
+            processMovement(e, false, _thisImg, _layers, _totalLayers, _shine);
+          });
+          _thisImg.addEventListener('mouseenter', function() {
+            _thisImg.firstChild.className += ' over';
+          });
+          _thisImg.addEventListener('mouseleave', function() {
+            var container = _thisImg.firstChild;
+            container.className = container.className.replace(' over', '');
+            container.style.transform = '';
+            _shine.style.cssText = '';
+            for (var ly = 0; ly < _totalLayers; ly++) {
+              _layers[ly].style.transform = '';
+            }
+          });
+        })(thisImg, layers, totalLayerElems, shineHTML);
+      }
+
+      function processMovement(e, touchEnabled, elem, layers, totalLayers, shine) {
+        var bd = document.body, htm = document.documentElement;
+        var bdst = bd.scrollTop || htm.scrollTop;
+        var bdsl = bd.scrollLeft;
+        var pageX = (touchEnabled && e.touches) ? e.touches[0].pageX : e.pageX;
+        var pageY = (touchEnabled && e.touches) ? e.touches[0].pageY : e.pageY;
+        var offsets = elem.getBoundingClientRect();
+        var w = elem.clientWidth || elem.offsetWidth || 350;
+        var h = elem.clientHeight || elem.offsetHeight || 280;
+        var wMultiple = 320 / w;
+        var offsetX = 0.52 - (pageX - offsets.left - bdsl) / w;
+        var offsetY = 0.52 - (pageY - offsets.top - bdst) / h;
+        var dy = (pageY - offsets.top - bdst) - h / 2;
+        var dx = (pageX - offsets.left - bdsl) - w / 2;
+        var yRotate = (offsetX - dx) * (0.07 * wMultiple);
+        var xRotate = (dy - offsetY) * (0.1 * wMultiple);
+        var imgCSS = 'rotateX(' + xRotate + 'deg) rotateY(' + yRotate + 'deg)';
+
+        if (elem.firstChild.className.indexOf(' over') != -1) {
+          imgCSS += ' scale3d(1.05,1.05,1.05)';
+        }
+        elem.firstChild.style.transform = imgCSS;
+
+        var arad = Math.atan2(dy, dx);
+        var angle = arad * 180 / Math.PI - 90;
+        if (angle < 0) angle += 360;
+
+        var shineIntensity = (pageY - offsets.top - bdst) / h * 0.3;
+        shine.style.background = 'linear-gradient(' + angle + 'deg, rgba(255,255,255,' + shineIntensity + ') 0%,rgba(255,255,255,0) 80%)';
+        shine.style.transform = 'translateX(' + (offsetX * totalLayers - 0.1) + 'px) translateY(' + (offsetY * totalLayers - 0.1) + 'px)';
+
+        var revNum = totalLayers;
+        for (var ly = 0; ly < totalLayers; ly++) {
+          var factor = (ly * 2.5) / wMultiple;
+          layers[ly].style.transform = 'translateX(' + (offsetX * revNum) * factor + 'px) translateY(' + (offsetY * totalLayers) * factor + 'px)';
+          revNum--;
+        }
+      }
+    }
+
+    window.addEventListener('load', function() {
+      atvImg();
+    });
+
+    // filter UI mock
+    const filterBtns = document.querySelectorAll('.filter');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function () {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
